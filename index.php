@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include_once 'header.php';
 ?>
 
@@ -9,11 +8,7 @@
     <title>MeTube</title>
 </head>
 <body>
-    <a href="logout.php">Logout</a>
     <h1>index page</h1>
-
-    <br>
-    Hello User
 
 
 </body>
