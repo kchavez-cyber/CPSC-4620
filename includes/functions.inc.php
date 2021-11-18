@@ -99,6 +99,7 @@
         mysqli_stmt_bind_param($state, "ssss", $name, $email, $username, $hashPass);
         mysqli_stmt_execute($state);
         mysqli_stmt_close($state);
+        mysqli_close($conn);
         heaader("location: ../signup.php?error=none");
         exit();
     }
