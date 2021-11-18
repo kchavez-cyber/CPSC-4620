@@ -1,14 +1,12 @@
 <?php
+
 $servername = "mysql1.cs.clemson.edu";
-$username = "meTube_qiag";
-$password = "4620project";
-$dbname = "meTube_zfib";
+$dBUsername = "meTube_qiag";
+$dBPassword = "4620project";
+$dBName = "meTube_zfib";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
 
-// Check connection
 if (!$conn) {
-  die("Connection failed: ".mysqli_connect_error());
+	die("Connection failed: ".mysqli_connect_error());
 }
-echo "Connected successfully";
