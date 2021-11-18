@@ -13,7 +13,7 @@ if (isset($_POST["submit"])) {
   require_once 'functions.inc.php';
 
   // Left inputs empty
-  if (emptyinLogin($username, $pwd) === true) {
+  if (emptyLogin($username, $pwd) === true) {
     header("location: ../login.php?error=emptyinput");
 		exit();
   }

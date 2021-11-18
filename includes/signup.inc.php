@@ -19,7 +19,7 @@ if(isset($_POST["submit"]))
 
     if(emailInvalid($email) !== false)
     {
-        header("location: ../signup.php?error=invalidemail");
+        header("location: ../signup.php?error=invalide-mail");
         exit();
     }
 
@@ -31,13 +31,13 @@ if(isset($_POST["submit"]))
 
     if(passMatch($pwdRepeat, $pwd) !== false)
     {
-        header("location: ../signup.php?error=passwordontmatch");
+        header("location: ../signup.php?error=passwordiffer");
         exit();
     }
 
     if(userExists($conn, $username, $email) !== false)
     {
-        header("location: ../signup.php?error=usernametaken");
+        header("location: ../signup.php?error=usernameused");
         exit();
     }
 

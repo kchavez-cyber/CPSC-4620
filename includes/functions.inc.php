@@ -55,7 +55,7 @@
         return $result;
     }
 
-    function userExists($conn, $username, $email)
+    function userExists($conn, $username)
     {
         $sql = "SELECT * FROM users WHERE = usersUid = ? OR usersEmail = ?;";
         $state = mysqli_stmt_init($conn);
@@ -101,6 +101,47 @@
         mysqli_stmt_close($state);
         heaader("location: ../signup.php?error=none");
         exit();
+    }
+
+    function emptyLogin($username, $pwd) 
+    {
+        $result;
+        if (empty($pwd) || empty($username)) 
+        {
+            $result = true;
+        }
+        else 
+        {
+            $result = false;
+        }
+        return $result;
+    }
+
+    function loginUser($conn, $username, $pwd) {
+        $exists = userExists($conn, $username);
+    
+        if ($exists === false) 
+        {
+            header("location: ../login.php?error=incorrectlogin");
+            exit();
+        }
+    
+        $hash = $exists["usersPwd"];
+        $verPass = password_verify($pwd, $hash);
+    
+        if ($verPass === false) 
+        {
+            header("location: ../login.php?error=incorrectlogin");
+            exit();
+        }
+        else if ($verPass === true) 
+        {
+            session_start();
+            $_SESSION["userid"] = $exists["usersId"];
+            $_SESSION["useruid"] = $exists["usersUid"];
+            header("location: ../index.php?error=none");
+            exit();
+        }
     }
 
 
