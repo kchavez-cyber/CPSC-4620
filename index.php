@@ -8,8 +8,7 @@
     <title>MeTube</title>
 </head>
 <body>
-    <a href="logout.php">Logout</a>
-    <h1>index page</h1>
+    <h1>index page for MeTube</h1>
 
     <br>
     Hello User

@@ -18,6 +18,14 @@ if (isset($_POST["submit"])) {
 		exit();
   }
 
+  
+  if (userExistsLogin($conn, $username, $pwd) !== true) {
+    header("location: ../login.php?error=noexistuser");
+		exit();
+  }
+
+
+
   // If we get to here, it means there are no user errors
 
   // Now we insert the user into the database

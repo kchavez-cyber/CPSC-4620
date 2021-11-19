@@ -103,6 +103,92 @@
         exit();
     }
 
+    function emptyInputLogin($username, $pwd) {
+        $result;
+        if (empty($username) || empty($pwd)) {
+            $result = true;
+        }
+        else {
+            $result = false;
+        }
+        return $result;
+    }
+
+    function loginUser($conn, $username, $pwd) {
+        $uidExists = userExists($conn, $username, $email);
+    
+        if ($userExists === false) {
+            header("location: ../login.php?error=wrongid");
+            exit();
+        }
+    
+        $pwdHashed = $uidExists["usersPwd"];
+        $checkPwd = password_verify($pwd, $pwdHashed);
+    
+        if ($checkPwd === false) {
+            header("location: ../login.php?error=wrongpass");
+            exit();
+        }
+        else if ($checkPwd === true) {
+            session_start();
+            $_SESSION["userid"] = $uidExists["usersId"];
+            $_SESSION["useruid"] = $uidExists["usersUid"];
+            header("location: ../index.php?error=none");
+            exit();
+        }
+    }
+
+    function userExistsLogin($conn, $username)
+    {
+        $sql = "SELECT * FROM users WHERE usersName = ?;";
+        $state = mysqli_stmt_init($conn);
+
+        if(!mySqli_stmt_prepare($state, $sql))
+        {
+            header("location: ../signup.php?error=statefailed1");
+            exit();
+        }
+
+        mysqli_stmt_bind_param($state, "s", $username);
+        mysqli_stmt_execute($state);
+
+        $resultsData = mysqli_stmt_get_result($state);
+
+        if($r = mysqli_fetch_assoc($resultsData))
+        {
+            return $r;
+        }
+        else
+        {
+            $result = false;
+            return $result;
+        }
+        mysqli_stmt_close($state);
+
+    }
+
+    /*
+            $result;
+        if(!preg_match("/^[a-zA-Z0-9]*$/", $username))
+        {
+            $result = true;
+        }
+        else
+        {
+            $result = false;
+        }
+        return $result;
+    function changeBio($conn, $bio)
+    {
+        $mysql = "SELECT * FROM "
+    }
+
+    function changeGen($conn, $gender)
+    {
+        $mysql = "SELECT * FROM "
+    }
+    */
+
 
 
 

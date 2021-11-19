@@ -1,7 +1,3 @@
-<?php
-  include_once 'header.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,10 +27,12 @@
         <input type="text" name="uid" placeholder="Username..."><BR></BR>
         <label for="Pasword">Password</label>
         <input type="password" name="pwd" placeholder="Password..."><BR></BR>
-        <label for="email">Re-enter password</label>
+        <label for="rePass">Re-enter password</label>
         <input type="password" name="pwdrepeat" placeholder="Repeat password..."><BR></BR>
         </p>
         <button type="submit" name="submit">Sign up</button>
+        <BR></BR>
+        <a href='login.php'>Return to login</a>
 </form>
 </div>
 <?php
@@ -43,8 +41,8 @@
       if ($_GET["error"] == "emptyinput") {
         echo "<p>Fill in all fields!</p>";
       }
-      else if ($_GET["error"] == "invaliduid") {
-        echo "<p>Choose a proper username!</p>";
+      else if ($_GET["error"] == "invalidusername") {
+        echo "<p>Username Taken! Choose another username!</p>";
       }
       else if ($_GET["error"] == "invalidemail") {
         echo "<p>Choose a proper email!</p>";

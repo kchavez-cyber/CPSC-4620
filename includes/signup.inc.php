@@ -25,7 +25,7 @@ if(isset($_POST["submit"]))
 
     if(usernameInvalid($username) !== false)
     {
-        header("location: ../signup.php?error=ivalidusername");
+        header("location: ../signup.php?error=invalidusername");
         exit();
     }
 

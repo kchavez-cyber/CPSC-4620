@@ -27,6 +27,22 @@
     </form> 
 </p>
 <BR>
+<?php
+if (isset($_GET["error"])) {
+    if ($_GET["error"] == "emptyinput") {
+      echo "<p>Fill in all fields!</p>";
+    }
+    else if($_GET["error"] == "noexistuser") {
+      echo "<p>User does not exist! Try again.</p>";
+    }
+    else if($_GET["error"] == "wrongid") {
+      echo "<p>Wrong username! Try again.</p>";
+    }
+    else if($_GET["error"] == "wrongpass") {
+      echo "<p>Wrong password! Try again.</p>";
+    }
+  }
+  ?>
 
 </div>
 <div class = "center">
