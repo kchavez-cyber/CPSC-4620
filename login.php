@@ -33,10 +33,7 @@ if (isset($_GET["error"])) {
       echo "<p>Fill in all fields!</p>";
     }
     else if($_GET["error"] == "noexistuser") {
-      echo "<p>User does not exist! Try again.</p>";
-    }
-    else if($_GET["error"] == "wrongid") {
-      echo "<p>Wrong username! Try again.</p>";
+      echo "<p>Username does not exist! Try again.</p>";
     }
     else if($_GET["error"] == "wrongpass") {
       echo "<p>Wrong password! Try again.</p>";

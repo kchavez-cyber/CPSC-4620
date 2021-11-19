@@ -156,7 +156,8 @@
 
         if($r = mysqli_fetch_assoc($resultsData))
         {
-            return $r;
+            $result = true;
+            return $result;
         }
         else
         {
@@ -164,7 +165,6 @@
             return $result;
         }
         mysqli_stmt_close($state);
-
     }
 
     /*
